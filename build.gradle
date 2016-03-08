@@ -1,11 +1,27 @@
 apply plugin: 'java'
-apply plugin: 'java-library-distribution'
+apply plugin: 'war'
+apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
 
 
 dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/JavaRLGlueCodec.jar')
+    compile 'org.webjars:bootstrap:3.2.0'
+    compile 'org.webjars:jquery:2.1.1'
+    // We use Velocity for example of template processing within the webapp.
+    compile 'org.apache.velocity:velocity:1.7'
 
 
 }
+
+war {
+    archiveName 'helloGretty.war'
+}
+
+gretty {
+    // Possible servletContainer values are 'jetty7', 'jetty8', 'jetty9', 'tomcat7', 'tomcat8'. Default is 'jetty9'.
+    // servletContainer = 'tomcat8'
+    // httpsEnabled = true
+}
+
