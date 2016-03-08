@@ -1,17 +1,12 @@
 package vocabtrainer.rlmodule;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Random;
 import org.rlcommunity.rlglue.codec.AgentInterface;
+import org.rlcommunity.rlglue.codec.taskspec.TaskSpec;
 import org.rlcommunity.rlglue.codec.types.Action;
 import org.rlcommunity.rlglue.codec.types.Observation;
 import org.rlcommunity.rlglue.codec.util.AgentLoader;
-import org.rlcommunity.rlglue.codec.taskspec.TaskSpec;
+
+import java.io.*;
+import java.util.Random;
 
 public class SarsaAgent implements AgentInterface {
 

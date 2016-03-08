@@ -1,3 +1,7 @@
 classes
 results.csv
 valuefunction.dat
+VocabularyTrainer.iml
+.gradle
+.idea
+build
