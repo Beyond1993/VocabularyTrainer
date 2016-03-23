@@ -9,19 +9,21 @@ dependencies {
     compile files('libs/JavaRLGlueCodec.jar')
     compile 'org.webjars:bootstrap:3.2.0'
     compile 'org.webjars:jquery:2.1.1'
-    // We use Velocity for example of template processing within the webapp.
     compile 'org.apache.velocity:velocity:1.7'
 
 
 }
 
-war {
-    archiveName 'helloGretty.war'
+gretty {
+    servletContainer = 'jetty9'
 }
 
-gretty {
-    // Possible servletContainer values are 'jetty7', 'jetty8', 'jetty9', 'tomcat7', 'tomcat8'. Default is 'jetty9'.
-    // servletContainer = 'tomcat8'
-    // httpsEnabled = true
+dependencies {
+    compile 'org.webjars:jquery:2.1.3'
 }
+
+ext {
+    integrationTestContainers = ['jetty9', 'tomcat7', 'tomcat8']
+}
+
 
