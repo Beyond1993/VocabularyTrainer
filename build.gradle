@@ -19,7 +19,8 @@ task wrapper(type: Wrapper) {
 }
 
 gretty {
-    servletContainer = 'jetty9'
+    servletContainer = 'tomcat8'
+
 }
 
 dependencies {

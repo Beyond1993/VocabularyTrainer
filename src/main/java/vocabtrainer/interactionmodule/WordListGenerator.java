@@ -21,6 +21,7 @@ public class WordListGenerator {
         try {
             ClassLoader.getSystemClassLoader().getResource("wordlist.txt");
 
+
         }
         catch(IOError ex){
             System.out.println("Resource cannot be loaded");
