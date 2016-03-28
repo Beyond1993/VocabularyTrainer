@@ -76,18 +76,18 @@
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
                             <h1><strong>Bootstrap</strong> Multi Step Registration Form</h1>
-                            <div class="description">
-                            	<p>
-	                            	This is a free responsive multi-step registration form made with Bootstrap.
-	                            	Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!
-                            	</p>
-                            </div>
+                            <!--<div class="description">-->
+                            	<!--<p>-->
+	                            	<!--This is a free responsive multi-step registration form made with Bootstrap.-->
+	                            	<!--Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!-->
+                            	<!--</p>-->
+                            <!--</div>-->
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	
-                        	<form role="form" action="" method="post" class="registration-form">
+                        	<form role="form" action="/VocabularyTrainer/register" method="post" class="registration-form">
 
                         		<fieldset>
 		                        	<div class="form-top">
@@ -102,13 +102,13 @@
 		                            <div class="form-bottom">
 										<div class="form-group">
 											<label class="sr-only" for="form-email">nickname</label>
-											<input type="text" name="form-nickname" placeholder="Nickename..." class="form-nickname form-control" id="form-nickname">
-											<p id="form-nickname-warn" style="display:none";> &nbsp nickname exists, please choose a new one :)</p>
+											<input type="text" name="nickname" placeholder="Nickename..." class="form-nickname form-control" id="form-nickname">
+											<p id="form-nickname-warn" style="display:none";> &nbsp nickname exists or empty, please input again :)</p>
 										</div>
 
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Password</label>
-											<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+											<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-repeat-password">Repeat password</label>
@@ -134,15 +134,15 @@
 		                            <div class="form-bottom">
 										<div class="form-group">
 											<label class="sr-only" for="form-first-name">First name</label>
-											<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+											<input type="text" name="firstName" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-last-name">Last name</label>
-											<input type="text" name="form-last-name" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
+											<input type="text" name="lastName" placeholder="Last name..." class="form-last-name form-control" id="form-last-name">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-email">Email</label>
-											<input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+											<input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
 										</div>
 										<button type="button" class="btn btn-previous">Previous</button>
 										<button type="submit" class="btn ">Sigin Up !</button>
