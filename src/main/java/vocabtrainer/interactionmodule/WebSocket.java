@@ -32,6 +32,8 @@ import javax.websocket.server.ServerEndpoint;
 @ServerEndpoint("/websocket/echoAnnotation")
 public class WebSocket {
 
+
+
     /**
      * Process a received pong. This is a NO-OP.
      *
@@ -42,7 +44,7 @@ public class WebSocket {
         try {
             if (session.isOpen()) {
                // System.out.println(msg);
-                msg = msg + "java";    
+                msg = new StringBuilder().append("好").toString();
                 session.getBasicRemote().sendText(msg, last);
             }
         } catch (IOException e) {

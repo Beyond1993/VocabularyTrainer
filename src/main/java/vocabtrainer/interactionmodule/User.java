@@ -43,9 +43,12 @@ public class User {
             String sql = "select * from user where username=? and password=password(?)";
 
             PreparedStatement pstmt=con.prepareStatement(sql);
+
             pstmt.setString(1, userName);
             pstmt.setString(2, passWord);
             System.out.println(sql);
+
+
             ResultSet rs=pstmt.executeQuery();
             if(rs.next())
             {

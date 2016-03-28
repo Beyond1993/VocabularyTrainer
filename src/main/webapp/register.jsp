@@ -50,9 +50,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<span class="li-text">
-								Put some text or
+								This is 
 							</span> 
-							<a href="#"><strong>links</strong></a> 
+							<a href="login.jsp"><strong>login</strong></a>
 							<span class="li-text">
 								here, or some icons: 
 							</span> 
@@ -149,8 +149,8 @@
 				                    </div>
 			                    </fieldset>
 
-		                    
-		                    </form>
+								<input type="hidden" name="clientToken" id="form-token" value="${sessionScope.clientToken}" />
+							</form>
 		                    
                         </div>
                     </div>

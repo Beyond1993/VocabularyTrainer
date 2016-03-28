@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 
 /**
@@ -19,6 +20,38 @@ import java.util.Map;
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
+
+    String sToken;
+    private boolean validateToken(HttpServletRequest req)
+    {
+        try
+        {
+            String sessionToken = (String) req.getSession().getAttribute(
+                    "clientToken");
+            String clientToken = (String) req.getParameter("clientToken");
+            System.out.println("old session token: " + sessionToken);
+            System.out.println("old client token: " + clientToken);
+
+            if (null == sessionToken || sessionToken.isEmpty()
+                    || clientToken.equals(sessionToken))  {
+
+                sToken = UUID.randomUUID().toString().toUpperCase();
+                req.getSession().setAttribute("clientToken", sToken);
+                System.out.println("new token: " + (String) req.getSession().getAttribute(
+                        "clientToken"));
+                return true;
+            }
+            else
+                return false;
+        }
+        catch (Exception e)
+        {
+            // LOGGER.error(e.getMessage());
+            return false;
+        }
+
+    }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +65,11 @@ public class RegisterServlet extends HttpServlet {
         //super.doPost(req, resp);
         //resp.setContentType("text/html;charset=utf-8");
 
+        if (!validateToken(req)) {
+            System.out.println("hahah");
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            return;
+        }
         PrintWriter out = resp.getWriter();
 
         JdbcUtils jdbcUtils = new JdbcUtils();
@@ -40,7 +78,7 @@ public class RegisterServlet extends HttpServlet {
         String nickname = req.getParameter("nickname");// from ajax
         //only use isEmpty()  will lead to NullPointException
         if( nickname == null || nickname.isEmpty()){
-            req.getRequestDispatcher("error.jsp").forward(req, resp);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
         }
 
         String password = req.getParameter("password");//from ajax
@@ -67,11 +105,14 @@ public class RegisterServlet extends HttpServlet {
 
             //this is for jquery ajax callback function
             if(list == null || list.isEmpty()){
-                out.write("valid");
+                sToken = sToken + ",valid";
+                out.write(sToken);
             }else{
-                out.write("invalid");
+                sToken = sToken + ",invalid";
+                out.write(sToken);
             }
 
+            jdbcUtils.releaseConn();
             return;
         }
 
@@ -101,7 +142,7 @@ public class RegisterServlet extends HttpServlet {
             System.out.println("add faild");
             req.getRequestDispatcher("error.jsp").forward(req, resp);
         }
-
+        jdbcUtils.releaseConn();
 
     }
 }

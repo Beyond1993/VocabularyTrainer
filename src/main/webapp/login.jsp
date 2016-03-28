@@ -19,24 +19,6 @@
 </head>
 
 <body>
-<script language="javascript"> 
-　　 var checksubmitflg = false; 
-　　 function checksubmit() { 
-　　 if (checksubmitflg == true) { 
-　　 return false; 
-　　 } 
-　　 checksubmitflg = true; 
-　　 return true; 
-　　 } 
-　　 document.ondblclick = function docondblclick() { 
-　　 window.event.returnvalue = false; 
-　　 } 
-　　 document.onclick = function doconclick() { 
-　　 if (checksubmitflg) { 
-　　 window.event.returnvalue = false; 
-　　 } 
-　　 } 
-　　</script> 
 <%	
 	response.setHeader("Cache-Control","no-cache"); 
     response.setHeader("Cache-Control","no-store");  //和上面的参数不一样
@@ -102,10 +84,10 @@
 
 				<div class="form-group">
 
-					<button type="button" class="btn btn-default btn-lg btn-block facebook-button">
-						&#160;&#160;
-						<i class="fa fa-facebook"></i>
-               |  Login with Facebook
+					<button type="button" class="btn btn-default btn-lg btn-block facebook-button" onclick="javascrtpt:window.location.href='register.jsp'">
+						<%--&#160;&#160;--%>
+						<%--<i class="fa fa-facebook" ></i>--%>
+                   &nbsp; Register and join us !!
 					</button>
 
 				</div>

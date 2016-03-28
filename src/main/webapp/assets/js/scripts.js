@@ -25,6 +25,11 @@ jQuery(document).ready(function() {
 
 	//ajax nickname
 	$("#form-nickname").blur(function(){
+		if($(this).val() == "" ){
+			$("#form-nickname-warn").css('display','inline');
+			$("#form-nickname-warn").css('color','red');
+			return;
+		}
 
 
 		htmlobj=$.ajax({
@@ -33,20 +38,22 @@ jQuery(document).ready(function() {
 			data:{
 				nickname:$("#form-nickname").val(),
 				password:$("#form-password").val(),
-				lastName:$("#form-last-name").val(),
-				firstName:$("#form-first-name").val(),
-				email:$("#form-email").val()
+				clientToken:$("#form-token").val(),
 			},
 
 			//the defaful callback parameter tpye is responseText
 			success: function (resp) {
 
-				if(resp == "invalid"){
+				arr=resp.split(',');
+				//alert(arr[1]);
+				if(arr[1] == "invalid"){
 
 					$("#form-nickname-warn").css('display','inline');
 					$("#form-nickname-warn").css('color','red');
+					$("#form-token").val(arr[0]);
 
-				} else if(resp ="valid"){
+				} else if(arr[1] ="valid"){
+					$("#form-token").val(arr[0]);
 					$("#form-nickname-warn").css('display','none');
 				}
 			},

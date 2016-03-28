@@ -39,7 +39,7 @@ public class loginServlet extends HttpServlet {
         }
         catch (Exception e)
         {
-            //LOGGER.error(e.getMessage());
+           // LOGGER.error(e.getMessage());
             return false;
         }
 
@@ -73,7 +73,7 @@ public class loginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp);
         if (!validateToken(req)) {
-            req.getRequestDispatcher("error.jsp").forward(req, resp);
+            req.getRequestDispatcher("index.jsp").forward(req, resp);
             return;
         }
 

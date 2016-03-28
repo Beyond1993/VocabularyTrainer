@@ -39,6 +39,7 @@ function connect() {
     };
     ws.onmessage = function (event) {
         output('Received: ' + event.data);
+        selectWords(event.data)
     };
     ws.onclose = function (event) {
         setConnected(false);
@@ -70,8 +71,20 @@ function echo(value) {
         var message = document.getElementById(id).value;
         output('Sent: ' + message);
         ws.send(message + "wayne");
+        //ws.send();
         selectPic();
     } else {
+        alert('WebSocket connection not established, please connect.');
+    }
+}
+
+function selectWords(value){
+    if(ws!= null){
+        var id = 'word';
+        //alert(value);
+        document.getElementById(id).innerHTML = value;
+
+    }else {
         alert('WebSocket connection not established, please connect.');
     }
 }

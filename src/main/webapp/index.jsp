@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 <meta charset="utf-8">
@@ -28,81 +28,68 @@
     response.setHeader("Pragma","no-cache");
 
     String username = (String)session.getAttribute("username");
-	out.println(username);
 	if(username == null){
-		out.println("error");
 		response.sendRedirect("login.jsp");
 	}else{
-		out.println("login");
 		//response.sendRedirect("login.jsp");
 	}
 %>
 
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span12">
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="#">Home</a>
-				</li>
-				<li>
-					<a href="#">Deck</a>
-				</li>
-				<li class="disabled">
-					<a href="#">Information</a>
-				</li>
-				<li class="dropdown pull-right">
 
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%=session.getAttribute("username")%><strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/VocabularyTrainer/loginOut">logout</a>
-						</li>
-						<li>
-							<a href="#">设置栏目</a>
-						</li>
-						<li>
-							<a href="#">更多设置</a>
-						</li>
-						<li class="divider">
-						</li>
-						<li>
-							<a href="#">分割线</a>
-						</li>
-					</ul>
+
+<div >
+	<ul class="nav nav-tabs">
+		<li class="active">
+			<a href="#">Home</a>
+		</li>
+		<li>
+			<a href="#">Deck</a>
+		</li>
+		<li class="disabled">
+			<a href="#">Information</a>
+		</li>
+		<li class="dropdown pull-right">
+
+			 <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%=session.getAttribute("username")%><strong class="caret"></strong></a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="/VocabularyTrainer/loginOut">logout</a>
 				</li>
+
 			</ul>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span4">
-			<img alt="140x140" src="./img/1.jpg" id="word"/>
-			<button id="connect" onclick="connect();">start</button>
-			<!--<form action="mywelcomeservlet" method="GET">-->
-			
-			<div class="btn-group">
-				 <input class="btn" type="submit" value="hard"     onclick="echo(1)" id="message1"/> 
-				 <input class="btn" type="submit" value="normal"   onclick="echo(2)" id="message2"/> 
-				 <input class="btn" type="submit" value="easy"     onclick="echo(3)" id="message3"/> 
-				 <input class="btn" type="submit" value="not know" onclick="echo(4)" id="message4"/>
-			</div>
-			<!--</form>-->
-		</div>
-		<div class="span4">
-			<img alt="140x140" src="./img/2.jpg" />
-			<div class="btn-group">
-				 <button class="btn" type="button"><em class="icon-align-left"></em></button> <button class="btn" type="button"><em class="icon-align-center"></em></button> <button class="btn" type="button"><em class="icon-align-right"></em></button> <button class="btn" type="button"><em class="icon-align-justify"></em></button>
-			</div>
-		</div>
-		<div class="span4" >
-			 <div id="console"/>
-			
-			<p>
-				<a class="btn" href="#">查看更多 »</a>
-			</p>
-		</div>
-	</div>
+		</li>
+	</ul>
+</div>
+
+
+<div  style="margin-bottom: 15%;margin-top:10%; ">
+	<p id="word" style="margin-left: 40%; font-size:12em">好</p>
+
+<div  id="hint" style="margin-top:  10%">
+	<p style="margin-left: 40% ; display:inline"> &nbsp this is help infomation :)</p>
+</div>
+<hr style="border:1px dashed #987cb9" width="100%" color=#987cb9 SIZE=1>
+
+<div id="answer">
+	<p style="margin-left: 40% ; display:inline"> answer</p>
+</div>
+<div  style="margin-left: 2%;margin-bottom: 1%">
+<button   class="btn" id="connect" onclick="connect();">start</button> <span><button   class="btn" id="disconnect" onclick="disconnect();">end</button></span>
 
 </div>
+<div class="btn-group navbar-fixed-bottom" style=" margin-left:35% ; margin-top:10% ; margin-bottom: 10%">
+	<input class="btn" type="submit" value="not know" onclick="echo(1)" id="message1"/>
+	<input class="btn" type="submit" value="hard"     onclick="echo(2)" id="message2"/>
+	<input class="btn" type="submit" value="normal"   onclick="echo(3)" id="message3"/>
+	<input class="btn" type="submit" value="easy"     onclick="echo(4)" id="message4"/>
+</div>
+
+	<div class="span4" >
+		<div id="console"/>
+
+		<p>
+			<a class="btn" href="#">see more »</a>
+		</p>
+	</div>
 </body>
 </html>
